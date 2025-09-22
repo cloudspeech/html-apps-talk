@@ -37,6 +37,15 @@ Bun.serve({
         // HTTP response, delivering a next chunk of bytes to be sent over the network)
         yield await Bun.file("./streaming.html").text();
 
+        const escapeHtml = (unsafe) => {
+          return unsafe
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+        };
+
         // then, forever do this, continously incrementing a counter:
         for (let counter = 0; true; counter++) {
           // wait for the next Bluesky-post text
@@ -44,7 +53,7 @@ Bun.serve({
           // yield a new HTML fragment that contains the text,
           // and will be slotted in one of slot 0..9
           // (in a circular fashion, using the counter)
-          yield `<span slot="item-${counter % 10}">${text}</span>`;
+          yield `<span slot="item-${counter % 10}">${escapeHtml(text)}</span>`;
           // again prepare an unresolved promise whose resolver is in the same lexical scope
           // (this gets us ready for the next loop iteration, since promises (unfortunately) can only
           // be resolved once)
