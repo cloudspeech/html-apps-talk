@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="refresh" content="60">
+    <title>Streaming HTML without JavaScript</title>
+
+    <style>
+      :root {
+        --color-primary: #2d3748;
+        --color-secondary: #ffc60d;
+      }
+
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 0;
+        color: var(--color-primary);
+      }
+
+      a {
+        color: var(--color-primary);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <template shadowrootmode="open">
+        <style>
+          :host {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+          }
+
+          header,
+          main,
+          footer {
+            padding: 1rem;
+          }
+
+          header,
+          footer {
+            background-color: var(--color-primary);
+            color: white;
+          }
+
+          header {
+            h1 {
+              margin: 0;
+              font-size: 1.5rem;
+            }
+          }
+
+          main {
+            flex-grow: 1;
+          }
+
+          footer {
+            a {
+              color: var(--color-secondary);
+            }
+          }
+        </style>
+
+        <header><h1>Bluesky Firehose streaming of new posts in real-time without JavaScript</h1></header>
+        <main>
+          <slot name="list">Loading...</slot>
+        </main>
+        <footer>
+          <div style="margin-bottom: 1rem">
+            Made by <a href="https://lamplightdev.com">lamplightdev</a> |
+            <a href="https://mastodon.social/@lamplightdev">Mastodon</a> |
+            <a href="https://twitter.com/lamplightdev">Twitter</a>
+          </div>
+          <div>
+            Read the
+            <a
+              href="https://lamplightdev.com/blog/2024/01/10/streaming-html-out-of-order-without-javascript/"
+              >blog post</a
+            >
+          </div>
+        </footer>
+      </template>
+
+      <div slot="list">
+        <template shadowrootmode="open">
+          <style>
+            li {
+              position: relative;
+            }
+
+            ::slotted(span) {
+              position: absolute;
+	            background: #fff;
+	            width: 100%;
+              white-space: nowrap;
+              overflow-x: hidden;
+              text-overflow: ellipsis;
+            }
+          </style>
+          <ul>
+            <li>
+              <slot name="item-0">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-1">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-2">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-3">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-4">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-5">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-6">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-7">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-8">Loading...</slot>
+            </li>
+            <li>
+              <slot name="item-9">Loading...</slot>
+            </li>
+          </ul>
+        </template>
+        <span slot="item-5">Item number 5</span>
+        <span slot="item-9">Item number 9</span>
+        <span slot="item-2">Item number 2</span>
+        <span slot="item-1">Item number 1</span>
+        <span slot="item-4">Item number 4</span>
+        <span slot="item-3">Item number 3</span>
+        <span slot="item-8">Item number 8</span>
+        <span slot="item-6">Item number 6</span>
+        <span slot="item-7">Item number 7</span>
+        <span slot="item-0">Item number 0</span>
+        <span slot="item-0">Item number 0 (2nd)</span>
+        <span slot="item-4">Item number 4 (2nd)</span>
+	<span slot="item-0">Item number 0 (3rd)</span>	
