@@ -158,7 +158,7 @@
                 display: none;
             }
 
-            &:has(.morethan:not(:checked)) .conditional {
+            &:has(.condition:not(:checked)) .hide-unless-condition-satisfied {
                 display: none;
             }
 
@@ -316,12 +316,16 @@
                 <fieldset id="householdcontents">
                     <h2>Would you like to insure the household contents at your place of residence?</h2>
                     <div class="center">
-                        <label>YES<input type="radio" name="householdcontents" value="placeofresidence" required/></label>
-                        <label>NO, E.G. VACATION HOME<input type="radio" class="morethan" value="vacationhome" name="householdcontents" /></label>
+                        <label>YES
+                            <input type="radio" name="householdcontents" value="placeofresidence" required/>
+                        </label>
+                        <label>NO, E.G. VACATION HOME
+                            <input type="radio" class="condition" value="vacationhome" name="householdcontents" />
+                        </label>
                     </div>
-                    <div class="conditional center vertical">
+                    <div class="hide-unless-condition-satisfied center vertical">
                         <h3>Where are the household contents you would like to insure?</h3>
-                        <input type="text" list="zipcodes" class="conditional" name="vacationhomezipcode" placeholder="e.g. 8000"/>
+                        <input type="text" list="zipcodes" name="vacationhomezipcode" placeholder="e.g. 8000"/>
                     </div>
                     <a href="#start" class="back">
                         <svg><use href="#icon-prev"></use></svg>Back
@@ -428,9 +432,9 @@
                         <label>1<input type="radio" name="householdmembers" value="1" required/></label>
                         <label>2<input type="radio" name="householdmembers" value="2"/></label>
                         <label>3<input type="radio" name="householdmembers" value="3"/></label>
-                        <label>MORE<input class="morethan three" type="radio" name="householdmembers" value="more"/></label>
+                        <label>MORE<input class="condition more-than-three" type="radio" name="householdmembers" value="more"/></label>
                     </div>
-                    <div class="center conditional top">
+                    <div class="center hide-unless-condition-satisfied top">
                             <select name="morehouseholdmembers" required>
                                 <option value="" disabled selected hidden>Please select</option>
                                 <option>4</option>
@@ -458,9 +462,9 @@
                         <label>NONE<input type="radio" name="children" value="0" required/></label>
                         <label>1<input type="radio" name="children" value="1"/></label>
                         <label>2<input type="radio" name="children" value="2"/></label>
-                        <label>MORE<input class="morethan two" type="radio" name="children" value="more"/></label>
+                        <label>MORE<input class="condition more-than-two" type="radio" name="children" value="more"/></label>
                     </div>
-                    <div class="center conditional top">
+                    <div class="center hide-unless-condition-satisfied top">
                         <select name="morechildren" required>
                             <option value="" disabled selected hidden>Please select</option>
                             <option>3</option>

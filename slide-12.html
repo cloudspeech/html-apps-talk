@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="HTML Apps talk about the power of web components for Enterprise frontend"/>
+    <meta name="theme-color" content="#ffffff">
+    <title>HTML Apps talk</title>
+    <link rel="stylesheet" href="/page.css">
+    <link rel="stylesheet" href="/view-transition.css">
+    <script type="speculationrules">
+		{
+			"prerender": [{
+				"source": "document",
+				"where": {
+					"href_matches": "/*"
+				},
+				"eagerness": "moderate"
+			}]
+		}
+	</script>
+  </head>
+  <body>
+    <h1>Multi-Step Forms 3</h1>
+    <ul style="margin-left: 5%">
+      <li><strong>Show me more HTML!</strong>
+        <img src="/multi_step_form_conditional_hiding.png" style="width: 50vw; float: right; margin: .5em">
+        <br><span><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has">:has (2023)↗</a></span>
+      <li><strong>Conditional hiding in CSS</strong>
+        <code>
+          <br>fieldset:has(.condition:not(:checked)) .hide-unless-condition-satisfied {
+                display: none
+            }
+        </code>
+      </li>
+    </ul>
+    <a class="navigate" href="/slide-13.html">➪</a>
+     <a class="navigate back" href="/slide-11.html">➪</a>
+  </body>
+</html>

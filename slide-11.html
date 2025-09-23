@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="HTML Apps talk about the power of web components for Enterprise frontend"/>
+    <meta name="theme-color" content="#ffffff">
+    <title>HTML Apps talk</title>
+    <link rel="stylesheet" href="/page.css">
+    <link rel="stylesheet" href="/view-transition.css">
+    <script type="speculationrules">
+		{
+			"prerender": [{
+				"source": "document",
+				"where": {
+					"href_matches": "/*"
+				},
+				"eagerness": "moderate"
+			}]
+		}
+	</script>
+  </head>
+  <body>
+    <h1>Multi-Step Forms 2</h1>
+    <ul style="margin-left: 5%">
+      <li><strong>Show me the HTML again!</strong> <span><a href="https://bhoot.dev/2025/form-method-dialog/">formmethod="dialog"↗</a></span>
+        <img src="/multi_step_form_html.png" style="width: 70vw">
+      <li><strong>'Continue without required input is invalid' in CSS</strong>
+        <code>
+          <br>input:invalid ~ button[type="submit"] ~ a:not(.back) {
+                display: none
+            }
+            <br>
+            input:valid ~ button[type="submit"] {
+                display: none
+            }
+        </code>
+      </li>
+    </ul>
+    <a class="navigate" href="/slide-12.html">➪</a>
+     <a class="navigate back" href="/slide-10.html">➪</a>
+  </body>
+</html>

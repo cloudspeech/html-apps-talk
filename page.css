@@ -44,9 +44,26 @@ ol {
         font-weight: bold;
 }
 
+ul {
+        font-size: 2em;
+}
+
 li {
         color: var(--li-color);
         margin-bottom: 2rem;
+}
+
+strong {
+    color: var(--fg-color);
+}
+
+span a {
+    color: inherit;
+    text-decoration: none;
+}
+
+code {
+    color: #f08d49;
 }
 
 a.navigate {

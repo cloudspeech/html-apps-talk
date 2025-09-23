@@ -2,10 +2,6 @@
 	navigation: auto;
 }
 
-::view-transition {
-	/*background: black;*/
-}
-
 @media (prefers-reduced-motion) {
 	::view-transition-group(*),
 	::view-transition-old(*),
@@ -66,7 +62,7 @@ body {
 }
 
 ::view-transition-group(page) {
-	animation-duration: 2.7s;
+	animation-duration: 1s;
 }
 
 ::view-transition-old(body) {

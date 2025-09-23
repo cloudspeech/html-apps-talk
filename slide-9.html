@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="HTML Apps talk about the power of web components for Enterprise frontend"/>
+    <meta name="theme-color" content="#ffffff">
+    <title>HTML Apps talk</title>
+    <link rel="stylesheet" href="/page.css">
+    <link rel="stylesheet" href="/view-transition.css">
+    <script type="speculationrules">
+		{
+			"prerender": [{
+				"source": "document",
+				"where": {
+					"href_matches": "/*"
+				},
+				"eagerness": "moderate"
+			}]
+		}
+	</script>
+  </head>
+  <body>
+    <h1>Streaming HTML</h1>
+    <ul style="margin-left: 5%">
+       <li><strong>HTML can stream?</strong>
+        <span>Since forever! Browsers don't wait for &lt;/html&gt; to paint pixels</span>
+      </li>
+      <li><strong>Into fixed slots?</strong>
+        <span style="color: #f08d49">1. <a href="https://web.dev/articles/declarative-shadow-dom">declarative Shadow DOM! (2023+)↗</a></span>
+        <span style="color: #fb1723;"> 2. ten named slots </span><span style="color:greenyellow">3. circular slot filling from stream</span><span> 4. never close the document
+      </li></span>
+      <li><strong>How to enable</strong>
+        <code>&lt;template shadowrootmode="open">&hellip;</code><code style="color: #fb1723;">&lt;slot name="item-0">&lt;/slot>&hellip;&lt;slot name="item-9">&lt;/slot></code><code>&lt;/template></code>
+        <code style="color:greenyellow">&lt;span slot="item-0">Bluesky post 1&lt;/span>&lt;span slot="item-1">Bluesky post 2&lt;/span>&hellip;</code>
+      </li>
+    </ul>
+    <a class="navigate" href="/slide-10.html">➪</a>
+     <a class="navigate back" href="/slide-8.html">➪</a>
+  </body>
+</html>
