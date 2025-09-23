@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Multi-step form without JavaScript</title>
+    <style>
+        :root {
+            --color-primary: #2d3748;
+            --color-secondary: #ffc60d;
+        }
+
+        header,
+        main,
+        footer {
+            padding: 1rem;
+        }
+
+        header,
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+
+            a {
+                color: var(--color-secondary);
+            }
+        }
+
+        header {
+            h1 {
+              margin: 0;
+              font-size: 1.5rem;
+            }
+        }
+
+        main {
+            height: 80vh;
+        }
+
+        body {
+            margin: 0;
+            font-family: Source Sans Pro, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #333;
+            text-align: left;
+        }
+
+        #icons {
+            display: none;
+        }
+
+        .center {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .vertical {
+            flex-direction: column;
+        }
+
+        .top {
+            margin-top: 1rem;
+        }
+
+        p {
+            text-align: center;
+            max-width: 750px;
+        }
+
+        fieldset[id] {
+            display: none;
+            border: none;
+
+            h2 {
+                font: 700 1.75rem / 1.142 Source Sans Pro, Arial, sans-serif;
+                text-align: center;
+            }
+
+            h3 {
+                margin: 3.75rem 0 1.25rem;
+                font: 700 1.25rem / 1.208 Source Sans Pro, Arial, sans-serif;
+                text-align: center;
+            }
+
+            &:target {
+                display: block;
+            }
+
+            input[type="text"], input[type="date"], select {
+                display: block;
+                color: #00008f;
+                text-align: center;
+                width: fit-content;
+                height: 40px;
+                margin: 0 auto;
+                padding: 0 20px;
+                border: 1px solid #999999;
+                border-radius: 0;
+                background: #fff;
+                font: 400 .875rem / 1.214 Source Sans Pro, Arial, sans-serif;
+
+                &:invalid {
+                    border: 1px solid #c91432;
+                }
+
+                &:valid {
+                    border: 1px solid #00008f;
+                }
+            }
+
+            input[type="text"] {
+                appearance: none;
+            }
+
+            input[type="radio"] {
+                content: '';
+                appearance: none;
+            }
+
+            select {
+                font-weight: 700;
+
+                &:invalid {
+                    color: gray;
+                }
+            }
+
+            label:has(input[type="radio"]) {
+                    height: fit-content;
+                    overflow: hidden;
+                    padding: 11px 1rem 10px;
+                    border: 1px solid #999999;
+                    background-color: #fff;
+                    cursor: pointer;
+                    font: 400 .875rem / 1.214 Source Sans Pro, Arial, sans-serif;
+                    text-align: center;
+                    text-overflow: ellipsis;
+                    text-transform: uppercase;
+            }
+
+            label:has(input[type="radio"]:checked) {
+                    color: #00008f;
+                    border-color: #00008f;
+                    outline: 1px solid #00008f;
+                    outline-offset: -2px;
+            }
+
+            input:invalid ~ button[type="submit"] ~ a:not(.back) {
+                display: none;
+            }
+
+            input:valid ~ button[type="submit"] {
+                display: none;
+            }
+
+            &:has(.morethan:not(:checked)) .conditional {
+                display: none;
+            }
+
+            a, button {
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            border: 0;
+            border-radius: .5rem;
+            margin: 2rem 0 0 0;
+            text-decoration: none;
+            background-color: transparent;
+            color: #00008f;
+            cursor: pointer;
+            font: 400 1rem / 1.5 Source Sans Pro, Arial, sans-serif;
+            font-weight: 700;
+            gap: 10px;
+            text-transform: uppercase;
+            float: right;
+
+            &.back {
+                float: left;
+            }
+
+            svg {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+    </style>
+  </head>
+  <body>
+        <header>
+            <h1>Multi-step form without JavaScript</h1>
+        </header>
+        <main>
+            <svg id="icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-next">
+                    <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+                </symbol>
+                <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-prev">
+                    <path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                </symbol>
+            </svg>
+            <datalist id="zipcodes">
+                <option value="8000"></option>
+                <option value="8001"></option>
+                <option value="8002"></option>
+                <option value="8003"></option>
+                <option value="8004"></option>
+                <option value="8005"></option>
+                <option value="8006"></option>
+                <option value="8007"></option>
+                <option value="8008"></option>
+                <option value="809"></option>
+                <option value="8010"></option>
+                <option value="8011"></option>
+                <option value="8012"></option>
+                <option value="8013"></option>
+                <option value="8014"></option>
+                <option value="8015"></option>
+                <option value="8016"></option>
+                <option value="8017"></option>
+                <option value="8018"></option>
+                <option value="8019"></option>
+                <option value="8020"></option>
+                <option value="8021"></option>
+                <option value="8022"></option>
+                <option value="8023"></option>
+                <option value="8024"></option>
+                <option value="8025"></option>
+                <option value="8026"></option>
+                <option value="8027"></option>
+                <option value="8028"></option>
+                <option value="8029"></option>
+                <option value="8030"></option>
+                <option value="8031"></option>
+                <option value="8032"></option>
+                <option value="8033"></option>
+                <option value="8034"></option>
+                <option value="8035"></option>
+                <option value="8036"></option>
+                <option value="8037"></option>
+                <option value="8038"></option>
+                <option value="8039"></option>
+                <option value="8040"></option>
+                <option value="8041"></option>
+                <option value="8042"></option>
+                <option value="8043"></option>
+                <option value="8044"></option>
+                <option value="8045"></option>
+                <option value="8046"></option>
+                <option value="8047"></option>
+                <option value="8048"></option>
+                <option value="8049"></option>
+                <option value="8050"></option>
+                <option value="8051"></option>
+                <option value="8052"></option>
+                <option value="8053"></option>
+                <option value="8054"></option>
+                <option value="8055"></option>
+                <option value="8056"></option>
+                <option value="8057"></option>
+                <option value="8058"></option>
+                <option value="8059"></option>
+                <option value="8060"></option>
+                <option value="8061"></option>
+                <option value="8062"></option>
+                <option value="8063"></option>
+                <option value="8064"></option>
+                <option value="8065"></option>
+                <option value="8066"></option>
+                <option value="8067"></option>
+                <option value="8068"></option>
+                <option value="8069"></option>
+                <option value="8070"></option>
+                <option value="8071"></option>
+                <option value="8072"></option>
+                <option value="8073"></option>
+                <option value="8074"></option>
+                <option value="8075"></option>
+                <option value="8076"></option>
+                <option value="8077"></option>
+                <option value="8078"></option>
+                <option value="8079"></option>
+                <option value="8080"></option>
+                <option value="8081"></option>
+                <option value="8082"></option>
+                <option value="8083"></option>
+                <option value="8084"></option>
+                <option value="8085"></option>
+                <option value="8086"></option>
+                <option value="8087"></option>
+                <option value="8088"></option>
+                <option value="8089"></option>
+                <option value="8090"></option>
+                <option value="8091"></option>
+                <option value="8092"></option>
+                <option value="8093"></option>
+                <option value="8094"></option>
+                <option value="8095"></option>
+                <option value="8096"></option>
+                <option value="8097"></option>
+                <option value="8098"></option>
+                <option value="8099"></option>
+            </datalist>
+            <form action="#">
+                <fieldset id="start">
+                    <label for="zipcode"><h2>Where do you live?</h2></label>
+                    <input type="text" list="zipcodes" id="zipcode" name="zipcode" placeholder="e.g. 8001" required/>
+                    <button type="submit" formmethod="dialog">Continue<svg><use href="#icon-next"></use></svg></button>
+                    <a href="#householdcontents">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="householdcontents">
+                    <h2>Would you like to insure the household contents at your place of residence?</h2>
+                    <div class="center">
+                        <label>YES<input type="radio" name="householdcontents" value="placeofresidence" required/></label>
+                        <label>NO, E.G. VACATION HOME<input type="radio" class="morethan" value="vacationhome" name="householdcontents" /></label>
+                    </div>
+                    <div class="conditional center vertical">
+                        <h3>Where are the household contents you would like to insure?</h3>
+                        <input type="text" list="zipcodes" class="conditional" name="vacationhomezipcode" placeholder="e.g. 8000"/>
+                    </div>
+                    <a href="#start" class="back">
+                        <svg><use href="#icon-prev"></use></svg>Back
+                    </a>
+                    <a href="#buildingtype">Continue
+                        <svg><use href="#icon-next"></use></svg>
+                    </a>
+                </fieldset>
+                <fieldset id="buildingtype">
+                    <h2>In what type of building are the household contents located?</h2>
+                    <div class="center">
+                        <label>SINGLE-FAMILY DWELLING<input type="radio" name="buildingtype" value="family" required/></label>
+                        <label>APARTMENT<input type="radio" name="buildingtype" value="apartment"/></label>
+                    </div>
+                    <a href="#householdcontents" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <a href="#occupied">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="occupied">
+                    <h2>Are the premises occupied?</h2>
+                    <div class="center">
+                        <label>PERMANENTLY OCCUPIED<input type="radio" name="occupied" value="permanent" required/></label>
+                        <label>SOMETIMES OCCUPIED, E.G. VACATION HOUSE<input type="radio" value="sometimes" name="occupied" /></label>
+                        <label>UNOCCUPIED, E.G. WORKSHOP<input type="radio" name="occupied" value="not"/></label>
+                    </div>
+                    <a href="#buildingtype" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <a href="#numrooms">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="numrooms">
+                    <h2>How many rooms does your apartment or house have?</h2>
+                    <div class="center vertical">
+                        <p>These are the premises in which your household contents are located.
+                            Kitchen, bathroom and basement are not counted. If a shared apartment:
+                            simply indicate the number of rooms in which your household contents are located.
+                        </p>
+                        <select name="numrooms">
+                            <option>1</option>
+                            <option>1.5</option>
+                            <option selected>2</option>
+                            <option>2.5</option>
+                            <option>3</option>
+                            <option>3.5</option>
+                            <option>4</option>
+                            <option>4.5</option>
+                        </select>
+                    </div>
+                    <a href="#occupied" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <a href="#buildingmaterial">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="buildingmaterial">
+                    <h2>What is the material of the building containing your household contents made of?</h2>
+                    <div class="center vertical">
+                        <p>Most buildings in Switzerland are made of masonry and/or concrete.
+                            Those primarily made of wood are wooden chalets, timber-framed buildings, wooden prefabricated houses etc.
+                            The main factor is the material that the building is primarily made of.
+                        </p>
+                    </div>
+                    <div class="center">
+                        <label>MASONRY CONSTRUCTION/CONCRETE<input type="radio" name="buildingmaterial" required/></label>
+                        <label>TIMBER<input type="radio" name="buildingmaterial" /></label>
+                    </div>
+                    <a href="#numrooms" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <a href="#renterowner">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="renterowner">
+                    <h2>Are you the owner or tenant?</h2>
+                    <div class="center">
+                        <label>OWNER<input type="radio" name="renterowner" required/></label>
+                        <label>TENANT<input type="radio" name="renterowner" /></label>
+                    </div>
+                    <a href="#buildingmaterial" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <a href="#standard">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="standard">
+                    <h2>How would you rate the standard of furnishings and fittings?</h2>
+                    <div class="center">
+                        <p>"Normal" is appropriate in most cases.
+                            If you have any expensive individual objects, it's worth selecting "Upscale."
+                            We ask this question so that we can roughly estimate the value of your household contents.
+                        </p>
+                    </div>
+                    <div class="center">
+                        <label>SIMPLE<input type="radio" name="standard" value="simple" required/></label>
+                        <label>NORMAL<input type="radio" name="standard"  value="normal"/></label>
+                        <label>UPSCALE<input type="radio" name="standard"  value="upscale"/></label>
+                    </div>
+                    <a href="#renterowner" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <a href="#birthday">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="birthday">
+                    <h2>When is your birthday?</h2>
+                    <input type="date" name="birthday" placeholder="Enter date of birth" required>
+                    <a href="#standard" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <button type="submit" formmethod="dialog">Continue<svg><use href="#icon-next"></use></svg></button>
+                    <a href="#householdmembers">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="householdmembers">
+                    <h2>How many adults are there in your household?</h2>
+                    <div class="center">
+                        <p>These people (aged 18 or over) will be covered by the insurance.
+                            You should include yourself of course.
+                        </p>
+                    </div>
+                    <div class="center">
+                        <label>1<input type="radio" name="householdmembers" value="1" required/></label>
+                        <label>2<input type="radio" name="householdmembers" value="2"/></label>
+                        <label>3<input type="radio" name="householdmembers" value="3"/></label>
+                        <label>MORE<input class="morethan three" type="radio" name="householdmembers" value="more"/></label>
+                    </div>
+                    <div class="center conditional top">
+                            <select name="morehouseholdmembers" required>
+                                <option value="" disabled selected hidden>Please select</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                            </select>
+                    </div>
+                    <a href="#birthday" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <a href="#children">Continue<svg><use href="#icon-next"></use></svg></a>
+                </fieldset>
+                <fieldset id="children">
+                    <h2>How many children (aged under 18) are there in your household?</h2>
+                    <div class="center">
+                        <p>Unborn children do not need to be stated.
+                            They are covered by the insurance free of charge from birth and can be registered at that time.
+                        </p>
+                    </div>
+                    <div class="center">
+                        <label>NONE<input type="radio" name="children" value="0" required/></label>
+                        <label>1<input type="radio" name="children" value="1"/></label>
+                        <label>2<input type="radio" name="children" value="2"/></label>
+                        <label>MORE<input class="morethan two" type="radio" name="children" value="more"/></label>
+                    </div>
+                    <div class="center conditional top">
+                        <select name="morechildren" required>
+                            <option value="" disabled selected hidden>Please select</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                        </select>
+                    </div>
+                    <a href="#householdmembers" class="back"><svg><use href="#icon-prev"></use></svg>Back</a>
+                    <button type="submit" formmethod="post" formaction="/proposals.html">Submit</button>
+                </fieldset>
+            </form>
+        </main>
+        <footer>
+            <div style="margin-bottom: 1rem">
+                Made by <a href="https://github.com/cloudspeech">Markus Walther</a> |
+                <a href="https://github.com/cloudspeech">Github</a> |
+                <a href="https://www.linkedin.com/in/markuswalther/">LinkedIn</a>
+            </div>
+            <div>
+                See the
+                <a href="https://github.com/cloudspeech/html-apps-talk">talk</a>
+            </div>
+        </footer>
+    </body>
+</html>
