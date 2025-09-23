@@ -1,0 +1,11 @@
+{
+  "name": "html-apps-talk",
+  "author": "Markus Walther",
+  "license": "MIT",
+  "scripts": {
+    "start": "bun --hot run ./server.js"
+  },
+  "devDependencies": {
+    "serve-static-bun": "^0.5.3",
+  }
+}

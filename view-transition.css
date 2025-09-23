@@ -1,0 +1,79 @@
+@view-transition {
+	navigation: auto;
+}
+
+::view-transition {
+	/*background: black;*/
+}
+
+@media (prefers-reduced-motion) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}
+
+:root {
+	view-transition-name: none;
+}
+
+body {
+	view-transition-name: page;
+}
+
+@keyframes shrink {
+	to {
+		scale: 0.8;
+		opacity: 0.5;
+	}
+}
+@keyframes grow {
+	from {
+		scale: 0.8;
+		opacity: 0.5;
+	}
+}
+@keyframes slide-in {
+	from {
+		translate: 100vw 0;
+	}
+}
+@keyframes slide-out {
+	to {
+		translate: 100vw 0;
+	}
+}
+@keyframes scale-up {
+	from {
+		scale: 0;
+	}
+}
+@keyframes scale-down {
+	to {
+		scale: 0;
+	}
+}
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+@keyframes fade-out {
+	to {
+		opacity: 0;
+	}
+}
+
+::view-transition-group(page) {
+	animation-duration: 2.7s;
+}
+
+::view-transition-old(body) {
+    animation-name: shrink;
+	transform-origin: 100% 50%;
+}
+
+::view-transition-new(body) {
+	animation-name: slide-in;
+}
