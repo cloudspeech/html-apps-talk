@@ -1,46 +1,59 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="description" content="HTML Apps talk about the power of web components for Enterprise frontend"/>
-    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="HTML Apps talk about the power of web components for Enterprise frontend"
+    />
+    <meta name="theme-color" content="#ffffff" />
     <title>HTML Apps talk</title>
-    <link rel="stylesheet" href="/page.css">
-    <link rel="stylesheet" href="/view-transition.css">
+    <link rel="stylesheet" href="./page.css" />
+    <link rel="stylesheet" href="./view-transition.css" />
     <script type="speculationrules">
-		{
-			"prerender": [{
-				"source": "document",
-				"where": {
-					"href_matches": "/*"
-				},
-				"eagerness": "moderate"
-			}]
-		}
-	</script>
+      {
+        "prerender": [
+          {
+            "source": "document",
+            "where": {
+              "href_matches": "./*"
+            },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <h1>Multi-Step Forms 1</h1>
     <ul style="margin-left: 5%">
-       <li><strong>Where is state stored in HTML?</strong>
-        <span>1. in the URL #hash 2. in radio-button :checked 3. in input :valid &hellip;</span>
+      <li>
+        <strong>Where is state stored in HTML?</strong>
+        <span
+          >1. in the URL #hash 2. in radio-button :checked 3. in input :valid
+          &hellip;</span
+        >
       </li>
-      <li><strong>Show me the HTML!</strong>
+      <li>
+        <strong>Show me the HTML!</strong>
         <span>a long &lt;form>, 1 &lt;fieldset> per step</span>
-        <img src="/multi_step_form_html.png" style="width: 50vw; float: right; margin: .5em">
-      <li><strong>'one step at a time' in CSS</strong>
+        <img
+          src="/multi_step_form_html.png"
+          style="width: 50vw; float: right; margin: 0.5em"
+        />
+      </li>
+
+      <li>
+        <strong>'one step at a time' in CSS</strong>
         <code>
-          <br>fieldset[id] {
-            display: none; }
-            <br>
-            fieldset[id]:target {
-                display: block;
-            }
+          <br />fieldset[id] { display: none; }
+          <br />
+          fieldset[id]:target { display: block; }
         </code>
       </li>
     </ul>
-    <a class="navigate" href="/slide-11.html">➪</a>
-     <a class="navigate back" href="/slide-9.html">➪</a>
+    <a class="navigate" href="./slide-11.html">➪</a>
+    <a class="navigate back" href="./slide-9.html">➪</a>
   </body>
 </html>

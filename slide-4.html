@@ -1,39 +1,47 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="description" content="HTML Apps talk about the power of web components for Enterprise frontend"/>
-    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="HTML Apps talk about the power of web components for Enterprise frontend"
+    />
+    <meta name="theme-color" content="#ffffff" />
     <title>HTML Apps talk</title>
-    <link rel="stylesheet" href="/page.css">
-    <link rel="stylesheet" href="/view-transition.css">
+    <link rel="stylesheet" href="./page.css" />
+    <link rel="stylesheet" href="./view-transition.css" />
     <script type="speculationrules">
-		{
-			"prerender": [{
-				"source": "document",
-				"where": {
-					"href_matches": "/*"
-				},
-				"eagerness": "moderate"
-			}]
-		}
-	</script>
+      {
+        "prerender": [
+          {
+            "source": "document",
+            "where": {
+              "href_matches": "./*"
+            },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <h1>This Talk</h1>
     <ul style="margin-left: 10%">
-      <li><strong>1 web page per slide</strong>
+      <li>
+        <strong>1 web page per slide</strong>
         <span>slide-0.html, slide-1&hellip;</span>
       </li>
-      <li><strong>Animated transitions</strong>
+      <li>
+        <strong>Animated transitions</strong>
         <span>on navigation between slides</span>
       </li>
-      <li><strong>App-like feeling</strong>
+      <li>
+        <strong>App-like feeling</strong>
         <span>Wow! How is that possible?</span>
       </li>
     </ul>
-    <a class="navigate" href="/slide-5.html">➪</a>
-     <a class="navigate back" href="/slide-3.html">➪</a>
+    <a class="navigate" href="./slide-5.html">➪</a>
+    <a class="navigate back" href="./slide-3.html">➪</a>
   </body>
 </html>

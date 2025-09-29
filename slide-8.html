@@ -1,41 +1,55 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="description" content="HTML Apps talk about the power of web components for Enterprise frontend"/>
-    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="HTML Apps talk about the power of web components for Enterprise frontend"
+    />
+    <meta name="theme-color" content="#ffffff" />
     <title>HTML Apps talk</title>
-    <link rel="stylesheet" href="/page.css">
-    <link rel="stylesheet" href="/view-transition.css">
+    <link rel="stylesheet" href="./page.css" />
+    <link rel="stylesheet" href="./view-transition.css" />
     <script type="speculationrules">
-		{
-			"prerender": [{
-				"source": "document",
-				"where": {
-					"href_matches": "/*"
-				},
-				"eagerness": "moderate"
-			}]
-		}
-	</script>
+      {
+        "prerender": [
+          {
+            "source": "document",
+            "where": {
+              "href_matches": "./*"
+            },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <h1>Multi-page transitions</h1>
     <ul style="margin-left: 5%">
-       <li><strong>what makes animation now possible?</strong>
-        <span><a href="https://developer.chrome.com/docs/web-platform/view-transitions/cross-document">Cross-document view transitions (2024), Chrome 126/Safari 18.2↗</a></span>
+      <li>
+        <strong>what makes animation now possible?</strong>
+        <span
+          ><a
+            href="https://developer.chrome.com/docs/web-platform/view-transitions/cross-document"
+            >Cross-document view transitions (2024), Chrome 126/Safari 18.2↗</a
+          ></span
+        >
       </li>
-      <li><strong>Under the hood</strong>
-        <span>1. browser screenshots old page 2. animates old out 3. renders new page 4. animates new in</span>
+      <li>
+        <strong>Under the hood</strong>
+        <span
+          >1. browser screenshots old page 2. animates old out 3. renders new
+          page 4. animates new in</span
+        >
       </li>
-      <li><strong>How to enable</strong>
-        <code>@view-transition {
-	navigation: auto;
-        }</code>
+      <li>
+        <strong>How to enable</strong>
+        <code>@view-transition { navigation: auto; }</code>
       </li>
     </ul>
-    <a class="navigate" href="/slide-9.html">➪</a>
-     <a class="navigate back" href="/slide-7.html">➪</a>
+    <a class="navigate" href="./slide-9.html">➪</a>
+    <a class="navigate back" href="./slide-7.html">➪</a>
   </body>
 </html>

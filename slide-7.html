@@ -1,39 +1,50 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="description" content="HTML Apps talk about the power of web components for Enterprise frontend"/>
-    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="HTML Apps talk about the power of web components for Enterprise frontend"
+    />
+    <meta name="theme-color" content="#ffffff" />
     <title>HTML Apps talk</title>
-    <link rel="stylesheet" href="/page.css">
-    <link rel="stylesheet" href="/view-transition.css">
+    <link rel="stylesheet" href="./page.css" />
+    <link rel="stylesheet" href="./view-transition.css" />
     <script type="speculationrules">
-		{
-			"prerender": [{
-				"source": "document",
-				"where": {
-					"href_matches": "/*"
-				},
-				"eagerness": "moderate"
-			}]
-		}
-	</script>
+      {
+        "prerender": [
+          {
+            "source": "document",
+            "where": {
+              "href_matches": "./*"
+            },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <h1>How does it all Work?</h1>
     <ul style="margin-left: 5%">
-       <li><strong>Multi-page transitions</strong>
+      <li>
+        <strong>Multi-page transitions</strong>
         <span>why is animation now possible?</span>
       </li>
-      <li><strong>Streaming HTML</strong>
+      <li>
+        <strong>Streaming HTML</strong>
         <span>HTML can stream? Into fixed slots?</span>
       </li>
-      <li><strong>Multi-step forms</strong>
-        <span>where is state stored in HTML? How is conditional UI + validation done?</span>
+      <li>
+        <strong>Multi-step forms</strong>
+        <span
+          >where is state stored in HTML? How is conditional UI + validation
+          done?</span
+        >
       </li>
     </ul>
-    <a class="navigate" href="/slide-8.html">➪</a>
-     <a class="navigate back" href="/slide-6.html">➪</a>
+    <a class="navigate" href="./slide-8.html">➪</a>
+    <a class="navigate back" href="./slide-6.html">➪</a>
   </body>
 </html>
