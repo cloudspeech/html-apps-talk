@@ -64,3 +64,42 @@ Bun.serve({
     );
   },
 });
+
+const FORM_SUBMISSION_EPILOGUE = `
+          </tbody>
+      </table>
+    </main>
+    <footer>
+            <div style="margin-bottom: 1rem">
+                Made by <a href="https://github.com/cloudspeech">Markus Walther</a> |
+                <a href="https://github.com/cloudspeech">Github</a> |
+                <a href="https://www.linkedin.com/in/markuswalther/">LinkedIn</a>
+            </div>
+            <div>
+                See the
+                <a href="https://github.com/cloudspeech/html-apps-talk">talk</a>
+            </div>
+    </footer>
+  </body>
+</html>`;
+
+Bun.serve({
+  port: 8081,
+  async fetch(request) {
+    const formData = await request.formData();
+    const htmlPrologue = await Bun.file("./formsubmission.html").text();
+    const responseHTML = [htmlPrologue];
+    for (const [key, value] of formData.entries()) {
+      responseHTML.push(
+        `<tr><td class="key">${key}</td><td class="value">${value}</td></tr>`
+      );
+    }
+    responseHTML.push(FORM_SUBMISSION_EPILOGUE);
+    return new Response(responseHTML.join("\n"), {
+      headers: {
+        "Content-Type": "text/html",
+      },
+      status: 200,
+    });
+  },
+});

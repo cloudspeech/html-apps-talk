@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Multi-step form without JavaScript</title>
+    <style>
+        :root {
+            --color-primary: #2d3748;
+            --color-secondary: #ffc60d;
+        }
+
+        header,
+        main,
+        footer {
+            padding: 1rem;
+        }
+
+        header,
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+
+            a {
+                color: var(--color-secondary);
+            }
+        }
+
+        header {
+            h1 {
+              margin: 0;
+              font-size: 1.5rem;
+            }
+        }
+
+        main {
+            height: 80vh;
+        }
+
+        body {
+            margin: 0;
+            font-family: Source Sans Pro, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #333;
+            text-align: left;
+        }
+
+        #icons {
+            display: none;
+        }
+
+        .center {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .vertical {
+            flex-direction: column;
+        }
+
+        .top {
+            margin-top: 1rem;
+        }
+
+        p {
+            text-align: center;
+            max-width: 750px;
+        }
+
+        fieldset[id] {
+            display: none;
+            border: none;
+
+            h2 {
+                font: 700 1.75rem / 1.142 Source Sans Pro, Arial, sans-serif;
+                text-align: center;
+            }
+
+            h3 {
+                margin: 3.75rem 0 1.25rem;
+                font: 700 1.25rem / 1.208 Source Sans Pro, Arial, sans-serif;
+                text-align: center;
+            }
+
+            &:target {
+                display: block;
+            }
+
+            input[type="text"], input[type="date"], select {
+                display: block;
+                color: #00008f;
+                text-align: center;
+                width: fit-content;
+                height: 40px;
+                margin: 0 auto;
+                padding: 0 20px;
+                border: 1px solid #999999;
+                border-radius: 0;
+                background: #fff;
+                font: 400 .875rem / 1.214 Source Sans Pro, Arial, sans-serif;
+
+                &:invalid {
+                    border: 1px solid #c91432;
+                }
+
+                &:valid {
+                    border: 1px solid #00008f;
+                }
+            }
+
+            input[type="text"] {
+                appearance: none;
+            }
+
+            input[type="radio"] {
+                content: '';
+                appearance: none;
+            }
+
+            select {
+                font-weight: 700;
+
+                &:invalid {
+                    color: gray;
+                }
+            }
+
+            label:has(input[type="radio"]) {
+                    height: fit-content;
+                    overflow: hidden;
+                    padding: 11px 1rem 10px;
+                    border: 1px solid #999999;
+                    background-color: #fff;
+                    cursor: pointer;
+                    font: 400 .875rem / 1.214 Source Sans Pro, Arial, sans-serif;
+                    text-align: center;
+                    text-overflow: ellipsis;
+                    text-transform: uppercase;
+            }
+
+            label:has(input[type="radio"]:checked) {
+                    color: #00008f;
+                    border-color: #00008f;
+                    outline: 1px solid #00008f;
+                    outline-offset: -2px;
+            }
+
+            input:invalid ~ button[type="submit"] ~ a:not(.back) {
+                display: none;
+            }
+
+            input:valid ~ button[type="submit"] {
+                display: none;
+            }
+
+            &:has(.condition:not(:checked)) .hide-unless-condition-satisfied {
+                display: none;
+            }
+
+            a, button {
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            border: 0;
+            border-radius: .5rem;
+            margin: 2rem 0 0 0;
+            text-decoration: none;
+            background-color: transparent;
+            color: #00008f;
+            cursor: pointer;
+            font: 400 1rem / 1.5 Source Sans Pro, Arial, sans-serif;
+            font-weight: 700;
+            gap: 10px;
+            text-transform: uppercase;
+            float: right;
+
+            &.back {
+                float: left;
+            }
+
+            svg {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+    </style>
+  </head>
+  <body>
+        <header>
+            <h1>Multi-step form without JavaScript</h1>
+            <a href="http://localhost:8080/slide-6.html">Back to talk</a>
+        </header>
+        <main>
+            <h2>Form Submission Content</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Key</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+

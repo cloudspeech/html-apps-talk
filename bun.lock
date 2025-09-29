@@ -1,0 +1,14 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "html-apps-talk",
+      "devDependencies": {
+        "serve-static-bun": "^0.5.3",
+      },
+    },
+  },
+  "packages": {
+    "serve-static-bun": ["serve-static-bun@0.5.3", "", {}, "sha512-QlfA/Z30MwZl4XXWM9KevfinJRJjzJMRK8sXABbaY06Y7KTuXtbT1n0e8qdf1PgM59mpgSh/JTUM9Jjsh0E58Q=="],
+  }
+}
